@@ -11,7 +11,7 @@
             <p class="text-gray-600 mt-2">Masuk ke akun Anda</p>
         </div>
 
-        <form action="{{ route('auth.login') }}" method="POST" class="space-y-4">
+        <form action="{{ route('auth.login.post') }}" method="POST" class="space-y-4">
             @csrf
 
             <div>

@@ -11,7 +11,7 @@
             <p class="text-gray-600 mt-2">Buat akun baru untuk memulai</p>
         </div>
 
-        <form action="{{ route('auth.register') }}" method="POST" class="space-y-4">
+        <form action="{{ route('auth.register.post') }}" method="POST" class="space-y-4">
             @csrf
 
             <div>
