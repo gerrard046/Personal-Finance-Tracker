@@ -29,4 +29,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Relasi ke Transaction
+     */
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }

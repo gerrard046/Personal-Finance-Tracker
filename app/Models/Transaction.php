@@ -11,6 +11,7 @@ class Transaction extends Model
      * Ini penting untuk keamanan - hanya field ini yang bisa diisi dari user input
      */
     protected $fillable = [
+        'user_id',
         'item_name',
         'amount',
         'category',
@@ -25,4 +26,12 @@ class Transaction extends Model
     protected $casts = [
         'amount' => 'decimal:2',
     ];
+
+    /**
+     * Relasi ke User
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

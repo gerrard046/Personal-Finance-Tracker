@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
 class FinanceController extends Controller
@@ -13,9 +14,15 @@ class FinanceController extends Controller
      */
     public function dashboard()
     {
-        // Hitung total saldo (income - expense)
-        $incomes = Transaction::where('type', 'income')->sum('amount');
-        $expenses = Transaction::where('type', 'expense')->sum('amount');
+        $user = Auth::user();
+
+        // Hitung total saldo (income - expense) untuk user yang login
+        $incomes = Transaction::where('user_id', $user->id)
+            ->where('type', 'income')
+            ->sum('amount');
+        $expenses = Transaction::where('user_id', $user->id)
+            ->where('type', 'expense')
+            ->sum('amount');
         $currentBalance = $incomes - $expenses;
 
         // Hitung Daily Safe Limit (Anti-Boros Logic)
@@ -25,8 +32,9 @@ class FinanceController extends Controller
         // Tentukan status warna berdasarkan Daily Safe Limit
         $status = $this->getStatusColor($dailySafeLimit);
 
-        // Ambil 5 transaksi terakhir
-        $recentTransactions = Transaction::orderBy('created_at', 'desc')
+        // Ambil 5 transaksi terakhir untuk user yang login
+        $recentTransactions = Transaction::where('user_id', $user->id)
+            ->orderBy('created_at', 'desc')
             ->limit(5)
             ->get();
 
@@ -45,6 +53,22 @@ class FinanceController extends Controller
     }
 
     /**
+     * Menampilkan form untuk menambah income/saldo
+     */
+    public function showAddIncome()
+    {
+        return view('finance.add-income');
+    }
+
+    /**
+     * Menampilkan form untuk menambah expense/pengeluaran
+     */
+    public function showAddExpense()
+    {
+        return view('finance.add-expense');
+    }
+
+    /**
      * Menyimpan transaksi baru ke database
      */
     public function storeTransaction(Request $request)
@@ -57,6 +81,9 @@ class FinanceController extends Controller
             'type' => 'required|in:income,expense',
             'note' => 'nullable|string|max:500',
         ]);
+
+        // Tambahkan user_id
+        $validated['user_id'] = Auth::id();
 
         // Jika tipe expense, ubah amount menjadi negatif
         if ($validated['type'] === 'expense') {
@@ -120,3 +147,4 @@ class FinanceController extends Controller
         }
     }
 }
+
