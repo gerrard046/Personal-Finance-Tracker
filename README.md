@@ -24,47 +24,101 @@ Personal Finance Tracker adalah aplikasi web yang dirancang khusus untuk membant
 ## 🚀 Quick Start
 
 ### Prerequisites
-- PHP 8.1 atau lebih tinggi
-- Composer
-- Laravel 11
+- **PHP 8.1** atau lebih tinggi ([Download PHP](https://www.php.net/downloads))
+- **Composer** ([Download Composer](https://getcomposer.org/download/))
+- **Node.js** (opsional, untuk asset compilation)
+
+> ℹ️ **Untuk Windows Users:** Kami recommend menggunakan **XAMPP** yang sudah include PHP dan Apache. [Download XAMPP](https://www.apachefriends.org/)
 
 ### Installation
 
-1. **Clone repository dan masuk ke folder project**
-   ```bash
-   cd Personal-Finance-Tracker
-   ```
+#### 📋 Step 1: Download & Extract Project
+1. Download repository sebagai ZIP dari GitHub
+2. Extract ke folder yang Anda inginkan
+3. Buka Command Prompt / PowerShell di folder tersebut
 
-2. **Install dependencies**
-   ```bash
-   composer install
-   ```
+#### 🔧 Step 2: Install Composer Dependencies
+```bash
+composer install
+```
 
-3. **Setup environment**
-   ```bash
-   cp .env.example .env
-   php artisan key:generate
-   ```
+**❌ Jika error `composer not found`:**
+- Pastikan Composer sudah terinstall
+- Gunakan full path: `C:\ProgramData\ComposerSetup\bin\composer install`
+- Atau tambahkan Composer ke PATH environment variables
 
-4. **Run migrations**
-   ```bash
-   php artisan migrate
-   ```
+#### 📝 Step 3: Setup Environment File
+```bash
+# Linux/Mac
+cp .env.example .env
 
-5. **Seed dummy data (optional)**
-   ```bash
-   php artisan db:seed --class=TransactionSeeder
-   ```
+# Windows (Command Prompt)
+copy .env.example .env
 
-6. **Start development server**
-   ```bash
-   php artisan serve
-   ```
+# Windows (PowerShell)
+Copy-Item .env.example .env
+```
 
-7. **Buka di browser**
-   ```
-   http://127.0.0.1:8000
-   ```
+#### 🔐 Step 4: Generate Application Key
+```bash
+php artisan key:generate
+```
+
+#### 🗄️ Step 5: Setup Database & Run Migrations
+```bash
+php artisan migrate
+```
+
+> **Database Note:** Project ini menggunakan **SQLite** (database file lokal) - tidak butuh MySQL server terpisah!
+
+#### 📦 Step 6: Seed Dummy Data (Optional)
+```bash
+php artisan db:seed --class=TransactionSeeder
+```
+
+#### ▶️ Step 7: Start Development Server
+```bash
+php artisan serve
+```
+
+Anda akan melihat output seperti:
+```
+INFO  Server running on [http://127.0.0.1:8000]
+```
+
+#### 🌐 Step 8: Buka di Browser
+```
+http://127.0.0.1:8000
+```
+
+---
+
+### ❓ Troubleshooting
+
+#### Error: `Failed to open stream: No such file or directory` (vendor/autoload.php)
+**Solusi:** Jalankan `composer install` terlebih dahulu
+```bash
+composer install
+```
+
+#### Error: "command not found: composer" (Mac/Linux)
+**Solusi:** Gunakan path lengkap atau install Composer globally
+```bash
+php composer.phar install
+```
+
+#### Error: "PHP 8.1 required, you are running X.X.X"
+**Solusi:** Update PHP ke versi 8.1+
+- Untuk XAMPP users: Edit `php.ini` atau upgrade XAMPP ke versi terbaru
+
+#### Error: ".env file not found"
+**Solusi:** Pastikan Anda sudah copy `.env.example` ke `.env`
+
+#### Port 8000 sudah digunakan
+**Solusi:** Gunakan port berbeda
+```bash
+php artisan serve --port=8001
+```
 
 ---
 
