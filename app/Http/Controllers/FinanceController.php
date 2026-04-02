@@ -23,6 +23,7 @@ class FinanceController extends Controller
         $expenses = Transaction::where('user_id', $user->id)
             ->where('type', 'expense')
             ->sum('amount');
+        // FIXED: amount sudah positif di database, jadi tinggal kurangi
         $currentBalance = $incomes - $expenses;
 
         // Hitung Daily Safe Limit (Anti-Boros Logic)
@@ -85,10 +86,8 @@ class FinanceController extends Controller
         // Tambahkan user_id
         $validated['user_id'] = Auth::id();
 
-        // Jika tipe expense, ubah amount menjadi negatif
-        if ($validated['type'] === 'expense') {
-            $validated['amount'] = abs($validated['amount']) * -1;
-        }
+        // Simpan amount sebagai positif (tipe field sudah menentukan income/expense)
+        $validated['amount'] = abs($validated['amount']);
 
         // Simpan transaksi ke database
         Transaction::create($validated);
