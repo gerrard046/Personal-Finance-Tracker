@@ -7,6 +7,14 @@ use App\Http\Controllers\Api\GoalController;
 use App\Http\Controllers\Api\TransactionController;
 
 /**
+ * Public auth routes (tidak butuh authentication)
+ */
+Route::prefix('auth')->group(function () {
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/login', [AuthController::class, 'login']);
+});
+
+/**
  * Protected routes (butuh session authentication)
  */
 Route::middleware('auth:web')->group(function () {
