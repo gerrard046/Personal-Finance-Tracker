@@ -37,9 +37,9 @@ Halaman pertama setelah login menampilkan:
 - **Demo Data**: ~Rp 224.773/hari (untuk bulan April dengan 22 hari tersisa)
 
 #### Card 3: Status Keuangan (Berwarna - HIJAU/KUNING/MERAH)
-- **HIJAU (Aman)**: Daily Limit > Rp 50.000 → Pengeluaran masih wajar
-- **KUNING (Waspada)**: Daily Limit Rp 10-50rb → Mulai hati-hati
-- **MERAH (Boros!)**: Daily Limit < Rp 10.000 → Kurangi spending!
+- **HIJAU (Aman)**: Daily Limit > Rp 300.000 → Budget sangat fleksibel
+- **KUNING (Waspada)**: Daily Limit Rp 100-300rb → Mulai rencanakan spending
+- **MERAH (Boros!)**: Daily Limit < Rp 100.000 → Harus hemat, jangan over!
 
 **Demo Status**: 🟢 **HIJAU** (Aman - Daily Limit tinggi)
 
@@ -119,9 +119,9 @@ Contoh:
 ```
 
 **Status Color:**
-- 🟢 HIJAU: Limit > Rp 50.000 (fleksibel)
-- 🟡 KUNING: Limit Rp 10-50rb (hati-hati)
-- 🔴 MERAH: Limit < Rp 10.000 (waspada)
+- 🟢 HIJAU: Limit > Rp 300.000 (budget fleksibel)
+- 🟡 KUNING: Limit Rp 100-300rb (perlu planning)
+- 🔴 MERAH: Limit < Rp 100.000 (harus hemat)
 
 ---
 

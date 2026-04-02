@@ -4,6 +4,12 @@
   <strong>Aplikasi Laravel untuk Memonitor Keuangan Pribadi & Menghindari Boros</strong>
 </p>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Status-Production%20Ready-green" alt="Production Ready">
+  <img src="https://img.shields.io/badge/Version-1.0.0-blue" alt="Version 1.0.0">
+  <img src="https://img.shields.io/badge/License-MIT-brightgreen" alt="MIT License">
+</p>
+
 ## 🎯 Tentang Aplikasi
 
 Personal Finance Tracker adalah aplikasi web yang dirancang khusus untuk membantu Anda mengelola keuangan pribadi dengan lebih baik. Terutama bagi yang sering boros, aplikasi ini menyediakan fitur **"Anti-Boros"** yang menghitung **Daily Safe Limit** - estimasi berapa banyak uang yang bisa Anda keluarkan setiap hari.

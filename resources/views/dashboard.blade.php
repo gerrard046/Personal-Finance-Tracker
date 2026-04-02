@@ -126,20 +126,23 @@
 <div class="mt-8 bg-blue-50 border-l-4 border-blue-500 p-6 rounded-lg">
     <h3 class="font-bold text-blue-900 mb-2">💡 Cara Kerja Anti-Boros</h3>
     <p class="text-blue-800 text-sm mb-3">
-        Sistem ini menghitung berapa banyak uang yang bisa Anda keluarkan setiap hari dengan membagi saldo total Anda dengan jumlah hari yang tersisa dalam bulan ini.
+        Sistem menghitung berapa banyak uang yang bisa Anda keluarkan setiap hari dengan membagi saldo total Anda dengan jumlah hari yang tersisa dalam bulan ini.
     </p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-        <div class="bg-white p-3 rounded">
+        <div class="bg-white p-3 rounded border-l-4 border-green-500">
             <p class="text-sm font-semibold text-green-600">🟢 HIJAU (Aman)</p>
-            <p class="text-xs text-gray-600">Daily Limit > Rp 50.000</p>
+            <p class="text-xs text-gray-600">Daily Limit > Rp 300.000</p>
+            <p class="text-xs text-gray-500 mt-1">Budget sangat fleksibel</p>
         </div>
-        <div class="bg-white p-3 rounded">
+        <div class="bg-white p-3 rounded border-l-4 border-yellow-500">
             <p class="text-sm font-semibold text-yellow-600">🟡 KUNING (Waspada)</p>
-            <p class="text-xs text-gray-600">Daily Limit Rp 10-50rb</p>
+            <p class="text-xs text-gray-600">Daily Limit Rp 100-300rb</p>
+            <p class="text-xs text-gray-500 mt-1">Mulai rencanakan spending</p>
         </div>
-        <div class="bg-white p-3 rounded">
+        <div class="bg-white p-3 rounded border-l-4 border-red-500">
             <p class="text-sm font-semibold text-red-600">🔴 MERAH (Boros!)</p>
-            <p class="text-xs text-gray-600">Daily Limit < Rp 10.000</p>
+            <p class="text-xs text-gray-600">Daily Limit < Rp 100.000</p>
+            <p class="text-xs text-gray-500 mt-1">Harus hemat, jangan over!</p>
         </div>
     </div>
 </div>

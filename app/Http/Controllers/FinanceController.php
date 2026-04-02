@@ -113,35 +113,35 @@ class FinanceController extends Controller
     /**
      * Menentukan status warna berdasarkan Daily Safe Limit
      * 
-     * Logika "Anti-Boros":
-     * - HIJAU (Aman): Daily Safe Limit > 50,000
-     *   → Anda bisa menghabiskan lebih dari 50rb per hari masih aman
+     * Logika "Anti-Boros" dengan benchmark 300rb:
+     * - HIJAU (Aman): Daily Safe Limit > 300,000
+     *   → Banyak duit, bisa belanja santai
      * 
-     * - KUNING (Waspada): Daily Safe Limit 10,000 - 50,000
-     *   → Mulai perlu hati-hati dengan pengeluaran harian
+     * - KUNING (Waspada): Daily Safe Limit 100,000 - 300,000
+     *   → Budget cukup, mulai perlu planning
      * 
-     * - MERAH (Boros): Daily Safe Limit < 10,000
-     *   → Pengeluaran sudah mencurigakan, kurangi spending!
+     * - MERAH (Boros): Daily Safe Limit < 100,000
+     *   → Budget ketat, harus hemat!
      */
     private function getStatusColor(float $dailyLimit): array
     {
-        if ($dailyLimit > 50000) {
+        if ($dailyLimit > 300000) {
             return [
                 'color' => 'green',
                 'label' => 'Aman',
-                'message' => 'Pengeluaran Anda masih dalam batas wajar',
+                'message' => 'Daily budget Anda > Rp 300rb, pengeluaran masih sangat fleksibel',
             ];
-        } elseif ($dailyLimit >= 10000) {
+        } elseif ($dailyLimit >= 100000) {
             return [
                 'color' => 'yellow',
                 'label' => 'Waspada',
-                'message' => 'Mulai hati-hati dengan pengeluaran harian Anda',
+                'message' => 'Daily budget Anda Rp 100-300rb, mulai rencanakan pengeluaran dengan baik',
             ];
         } else {
             return [
                 'color' => 'red',
                 'label' => 'Boros!',
-                'message' => 'Pengeluaran Anda sudah terlalu banyak, kurangi spending!',
+                'message' => 'Daily budget < Rp 100rb, harus di-hemat supaya tidak over budget!',
             ];
         }
     }
