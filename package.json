@@ -1,15 +1,31 @@
 {
     "$schema": "https://www.schemastore.org/package.json",
+    "name": "personal-finance-tracker",
+    "version": "1.1.0",
+    "description": "Track your income, expenses, and savings goals with ease",
+    "author": "Your Name",
+    "license": "MIT",
     "private": true,
-    "type": "module",
+    "type": "commonjs",
+    "main": "electron/main.js",
+    "homepage": "./",
     "scripts": {
         "build": "vite build",
-        "dev": "vite"
+        "dev": "vite",
+        "electron": "electron .",
+        "electron-dev": "cross-env NODE_ENV=development electron .",
+        "electron-build": "electron-builder --publish never",
+        "electron-build-portable": "electron-builder --win portable --publish never"
+    },
+    "dependencies": {
     },
     "devDependencies": {
         "@tailwindcss/vite": "^4.0.0",
         "axios": "^1.11.0",
         "concurrently": "^9.0.1",
+        "cross-env": "^7.0.3",
+        "electron": "^28.0.0",
+        "electron-builder": "^24.6.4",
         "laravel-vite-plugin": "^3.0.0",
         "tailwindcss": "^4.0.0",
         "vite": "^8.0.0"
