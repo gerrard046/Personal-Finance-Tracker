@@ -1,4 +1,87 @@
-# 💰 Personal Finance Tracker - FINAL RELEASE v1.0
+# 💰 Personal Finance Tracker - Release Notes
+
+---
+
+## 🚀 Latest: v1.1 - Goals Feature + REST API
+
+**Release Date**: April 2, 2026  
+**Status**: ✅ Production Ready
+
+### New Features in v1.1
+
+#### 🎯 Goals Management System
+Track savings targets dengan automatic calculations:
+- Create unlimited savings goals (e.g., "Beli Sepatu 2 juta")
+- Auto-calculate **days remaining** until target date
+- Auto-calculate **daily savings needed** (remaining amount / days remaining)
+- Auto-calculate **monthly savings needed** (remaining amount / months remaining)
+- Track **progress percentage** toward each goal
+- **Auto-complete** goal when target reaches current_saved
+- Filter goals by status: active, completed, cancelled
+- Categories: Fashion, Electronics, Travel, Investments, Health, Other
+
+**Example Usage**:
+```
+Goal: Beli Sepatu 2 juta
+Target Date: 2 Juni 2026 (61 hari)
+Current Saved: 500 ribu
+
+System calculates:
+- Remaining: 1.5 juta
+- Daily need: Rp 24,590/hari
+- Monthly need: Rp 738,105/bulan
+- Progress: 25%
+```
+
+#### 📡 Complete REST API
+14 endpoints untuk integrasi dengan aplikasi lain:
+
+**Goals API**:
+- `POST /api/goals` - Create goal
+- `GET /api/goals` - List user's goals
+- `GET /api/goals/{id}` - Get goal detail
+- `PUT /api/goals/{id}` - Update goal
+- `DELETE /api/goals/{id}` - Delete goal
+- `POST /api/goals/{id}/save` - Add savings to goal
+
+**Transactions API**:
+- `GET /api/transactions` - List with pagination & filters
+- `POST /api/transactions` - Create transaction
+- `GET /api/transactions/{id}` - Get detail
+- `PUT /api/transactions/{id}` - Update
+- `DELETE /api/transactions/{id}` - Delete
+- `GET /api/transactions/stats/summary` - Get stats (income, expense, balance)
+
+**Auth API**:
+- `POST /api/auth/register` - Register user
+- `POST /api/auth/login` - Login
+- `POST /api/auth/logout` - Logout
+- `GET /api/auth/me` - Get current user
+
+#### 🔐 User Authorization Policies
+- Users can only access their own goals and transactions
+- `GoalPolicy` and `TransactionPolicy` enforce data isolation
+- 403 Forbidden returned for unauthorized access
+
+### v1.1 Technical Details
+
+**New Models**:
+- `Goal.php` with 8 calculation methods
+
+**New Controllers**:
+- `Api/GoalController.php` - CRUD + savings endpoint
+- `Api/TransactionController.php` - CRUD + stats
+- `Api/AuthController.php` - Register/Login/Logout/Me
+
+**New Database**:
+- `create_goals_table` migration with proper schema
+
+**Documentation**:
+- `API_DOCUMENTATION.md` - Complete API reference with cURL examples
+
+---
+
+## 📋 FINAL RELEASE v1.0
 
 ## 🎉 Status: PRODUCTION READY
 
